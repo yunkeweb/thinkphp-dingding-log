@@ -48,6 +48,7 @@ class DingDing implements LogHandlerInterface
     protected function write(array $message):bool
     {
         $text = trim(implode("\n\n",$message));
+
         $data = [
             'msgtype' => 'markdown',
             'markdown' => [
@@ -56,9 +57,13 @@ class DingDing implements LogHandlerInterface
             ],
             'at'=>['isAtAll'=>true]
         ];
+
         $timestamp = time()*1000;
+
         $sign = $this->genSign($timestamp);
+
         $this->post($data,$timestamp,$sign);
+
         return true;
     }
 
