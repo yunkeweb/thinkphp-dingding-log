@@ -47,7 +47,7 @@ class DingDing implements LogHandlerInterface
 
     protected function write(array $message):bool
     {
-        $text = trim(implode("\n",$message));
+        $text = trim(implode("\n\n",$message));
         $data = [
             'msgtype' => 'markdown',
             'markdown' => [
